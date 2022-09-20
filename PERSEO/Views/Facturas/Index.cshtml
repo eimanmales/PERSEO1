@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PERSEO.Models.Factura>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VendedorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteNavigation.Dni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductoNavigation.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendedorNavigation.CodigoVendedor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Factura1">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Factura1">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Factura1">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
