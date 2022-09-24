@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PERSEO.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PERSEO.Controllers
 {
+    [Authorize]
     public class ProductoesController : Controller
     {
         private readonly TiendaContext _context;
