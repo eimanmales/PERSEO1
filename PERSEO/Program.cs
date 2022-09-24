@@ -1,11 +1,22 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.Options;
+using PERSEO.Controllers;
 using PERSEO.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(Option =>
+{
+    Option.LoginPath = "/AccesoController/Index"; //
+    Option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    Option.AccessDeniedPath = "/Home/Private";
+});
 
 builder.Services.AddDbContext<TiendaContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("conexion")));
@@ -25,10 +36,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Acceso}/{action=Index}/{id?}");
 
 app.Run();
