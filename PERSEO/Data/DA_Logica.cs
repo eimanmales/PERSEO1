@@ -9,9 +9,9 @@ namespace PERSEO.Data
         {
             return new List<Usuario>
             {
-                new Usuario{Nombre = "Eiman", Correo = "eiman@correo.com", Clave = "123", Roles = new string[]{"Administrador"} },
-                 new Usuario{Nombre = "Jose", Correo = "vendedor@correo.com", Clave = "123", Roles = new string[]{"Empleado"} },
-                  new Usuario{Nombre = "Gabi", Correo = "supervisora@correo.com", Clave = "123", Roles = new string[]{"Supervisor"} },
+                new Usuario{Nombre = "Eiman", Correo = "administrador@correo.com", Clave = "123", Roles = new string[]{"Administrador"} },
+                 new Usuario{Nombre = "Jose", Correo = "supervisor@correo.com", Clave = "123", Roles = new string[]{"Empleado"} },
+                  new Usuario{Nombre = "Gabi", Correo = "empleado@correo.com", Clave = "123", Roles = new string[]{"Supervisor"} },
                    new Usuario{Nombre = "Emily", Correo = "superempleado@correo.com", Clave = "123", Roles = new string[]{"Supervisor", "Empleado"} }
             };
         }
